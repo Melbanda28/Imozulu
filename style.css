@@ -1,0 +1,17 @@
+body {
+  background: white;
+  font-family: "Rotobo", sans-serif;
+}
+.weather-app {
+  background: lightskyblue;
+  max-width: 600px;
+  margin: 0 auto;
+}
+a {
+  color: blueviolet;
+}
+
+header {
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 30px;
+}
