@@ -6,12 +6,59 @@ body {
   background: lightskyblue;
   max-width: 600px;
   margin: 0 auto;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  border-radius: 16px;
+  padding: 30px;
 }
 a {
-  color: blueviolet;
+  color: black;
 }
 
 header {
   border-bottom: 1px solid #f9f7fe;
   padding-bottom: 30px;
+  color: blue;
+}
+
+.search-form-input {
+  background-color: #f9f7fe;
+  border: none;
+  border-radius: 6px;
+  width: 80%;
+  padding: 15px 20px;
+  font-size: 16px;
+}
+
+.search-form-button {
+  background-color: blue;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  margin-left: 5px;
+  color: white;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.weather-app-city {
+  margin: 0;
+  font-size: 38px;
+  line-height: 48px;
+}
+
+.weather-app-details {
+  font-size: 16px;
+  line-height: 20px;
+}
+div.strong {
+  color: #f65282;
+}
+footer {
+  border-top: 1px solid #f9f7fe;
+  padding: 30px 0 0 0;
+  text-align: center;
+  color: blue;
 }
