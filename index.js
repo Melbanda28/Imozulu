@@ -1,5 +1,14 @@
-function searchCity(event) {
-  event.preventDefault();
+function updateWeather(response) {}
+
+function searchCity(city) {
+  let apiKey = ` 0a266418598ob604ae10378et2402a5f`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key={ 0a266418598ob604ae10378et2402a5f}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(updateWeather);
+}
+
+function searchWeatherCity(event) {
+  event.preventDefault(event);
   let searchInput = document.querySelector("#search-form-input");
   console.log(searchInput.value);
   let cityElement = document.querySelector("#weather-app-city");
@@ -8,4 +17,4 @@ function searchCity(event) {
 }
 
 let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchCity);
+searchForm.addEventListener("submit", searchWeatherCity);
