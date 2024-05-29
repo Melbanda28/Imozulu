@@ -23,5 +23,41 @@ function searchWeatherCity(event) {
   searchCity(searchInput.value);
 }
 
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let day = date.getDay();
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  let formattedDay = days[day];
+  let currentTime = `${hours}:${minutes}`;
+  return `${formattedDay} ${currentTime}`;
+}
+
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchWeatherCity);
+
+let currentDateELement = document.querySelector("#current-date");
+let currentTimeElement = document.querySelector("#current-time");
+let currentDate = new Date();
+
+currentDateELement.innerHTML = formatDate(currentDate);
+currentTimeElement.innerHTML = formatDate(currentTime);
+searchCity("paris");

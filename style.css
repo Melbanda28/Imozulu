@@ -57,6 +57,10 @@ main {
   font-size: 16px;
   line-height: 20px;
 }
+.weather-app-details current-time {
+  color: rgb(145, 19, 84);
+  font: weight 500px;
+}
 .weather-app-details strong {
   color: rgb(145, 19, 84);
   font: weight 500px;
