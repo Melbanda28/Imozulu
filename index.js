@@ -4,7 +4,19 @@ function updateWeather(response) {
   let currentTemperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#weather-app-city");
   currentTemperatureElement.innerHTML = temperature;
+  let descriptionElement = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
+  let timeElement = document.querySelector("#time");
+  let date = new Date(response.data.time * 1000);
+
+  console.log(response.data.condition.description);
+
+  timeElement.innerHTML = formatDate(date);
   cityElement.innerHTML = response.data.city;
+  descriptionElement.innerHTML = response.data.condition.description;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
 }
 
 function searchCity(city) {
@@ -14,19 +26,9 @@ function searchCity(city) {
   axios.get(apiUrl).then(updateWeather);
 }
 
-function searchWeatherCity(event) {
-  event.preventDefault(event);
-  let searchInput = document.querySelector("#search-form-input");
-  console.log(searchInput.value);
-  let cityElement = document.querySelector("#weather-app-city");
-  cityElement.innerHTML = searchInput.value;
-  searchCity(searchInput.value);
-}
-
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
 
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -45,19 +47,21 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
+  let day = days[date.getDay()];
 
-  let formattedDay = days[day];
-  let currentTime = `${hours}:${minutes}`;
-  return `${formattedDay} ${currentTime}`;
+  return `${day} ${hours}:${minutes}`;
+}
+
+function searchWeatherCity(event) {
+  event.preventDefault(event);
+  let searchInput = document.querySelector("#search-form-input");
+  console.log(searchInput.value);
+  let cityElement = document.querySelector("#weather-app-city");
+  cityElement.innerHTML = searchInput.value;
+  searchCity(searchInput.value);
 }
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchWeatherCity);
 
-let currentDateELement = document.querySelector("#current-date");
-let currentTimeElement = document.querySelector("#current-time");
-let currentDate = new Date();
-
-currentDateELement.innerHTML = formatDate(currentDate);
-currentTimeElement.innerHTML = formatDate(currentTime);
 searchCity("paris");
