@@ -66,4 +66,4 @@ function searchWeatherCity(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchWeatherCity);
 
-searchCity("paris");
+searchCity("Cape Town");
