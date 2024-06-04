@@ -67,3 +67,19 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchWeatherCity);
 
 searchCity("Cape Town");
+
+let forecast = document.querySelector("#forecast");
+
+forecast.innerHTML = `
+  <div class = "weather-forecast-day">
+    <div class = "weather-forecast-date">Tue</div>
+    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+    class = "weather-forecast-icon">
+    <div class ="weather-forecast-temperatures">
+      <div class =" weather-forecast-temperature">
+        <strong>15℃</strong></div>
+    <div class = " weather-forecas-temperature">9℃</div>
+    </div>
+
+  </div>
+  `;
