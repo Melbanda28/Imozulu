@@ -19,13 +19,8 @@ function updateWeather(response) {
   descriptionElement.innerHTML = response.data.condition.description;
   humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
   windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
-}
 
-function searchCity(city) {
-  let apiKey = "0a266418598ob604ae10378et2402a5f";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-  console.log(apiUrl);
-  axios.get(apiUrl).then(updateWeather);
+  getForecast(response.data.city);
 }
 
 function formatDate(date) {
@@ -54,6 +49,13 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function searchCity(city) {
+  let apiKey = "0a266418598ob604ae10378et2402a5f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  console.log(apiUrl);
+  axios.get(apiUrl).then(updateWeather);
+}
+
 function searchWeatherCity(event) {
   event.preventDefault(event);
   let searchInput = document.querySelector("#search-form-input");
@@ -63,8 +65,15 @@ function searchWeatherCity(event) {
   searchCity(searchInput.value);
 }
 
-function displayForecast() {
-  let forecastElement = document.querySelector("#forecast");
+function getForecast(city) {
+  let apiKey = "0a266418598ob604ae10378et2402a5f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+
+  axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
+  console.log(response.data);
 
   let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
   let forecastHtml = "";
@@ -85,6 +94,7 @@ function displayForecast() {
   </div>
   `;
   });
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 
@@ -92,4 +102,3 @@ let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", searchWeatherCity);
 
 searchCity("Cape Town");
-displayForecast();
