@@ -63,16 +63,18 @@ function searchWeatherCity(event) {
   searchCity(searchInput.value);
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", searchWeatherCity);
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
 
-searchCity("Cape Town");
+  let days = ["Tue", "Wed", "Thur", "Fri", "Sat"];
+  let forecastHtml = "";
 
-let forecast = document.querySelector("#forecast");
-
-forecast.innerHTML = `
-  <div class = "weather-forecast-day">
-    <div class = "weather-forecast-date">Tue</div>
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class = "weather-forecast-day">
+    <div class = "weather-forecast-date">${day}</div>
     <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
     class = "weather-forecast-icon">
     <div class ="weather-forecast-temperatures">
@@ -80,6 +82,14 @@ forecast.innerHTML = `
         <strong>15℃</strong></div>
     <div class = " weather-forecas-temperature">9℃</div>
     </div>
-
   </div>
   `;
+  });
+  forecastElement.innerHTML = forecastHtml;
+}
+
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", searchWeatherCity);
+
+searchCity("Cape Town");
+displayForecast();
