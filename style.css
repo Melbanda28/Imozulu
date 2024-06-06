@@ -1,5 +1,6 @@
 body {
-  background: white;
+  background-image: url(images/bluesky.jpg);
+  background-size: 100%;
   font-family: "Rotobo", sans-serif;
 }
 .weather-app {
@@ -30,7 +31,7 @@ header {
 }
 
 .search-form-button {
-  background-color: blue;
+  background-color: #017ed3;
   padding: 15px 20px;
   font-size: 16px;
   border: none;
@@ -119,5 +120,5 @@ footer {
   border-top: 1px solid #f9f7fe;
   padding: 30px 0 0 0;
   text-align: center;
-  color: blue;
+  color: #017ed3;
 }
